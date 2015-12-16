@@ -4,7 +4,7 @@
 	//With strict mode, you can not use undeclared variables.
 	// for exemple :
 	// "use strict";
-	// x = 3.14;       // This will cause an error (x is not defined)
+	// x = 3.14; -> This will cause an error (x is not defined)
 	
 	console.log('Hello World!');
 
