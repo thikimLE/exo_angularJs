@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="../../etc/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="test.css"/>
+</head>
+
+<body>
+	<div ng-app="MyApp"> 										<!-- definir un module app xxx-->
+		<div ng-controller="SomeController"> 					<!-- definir un module controller dans un module app -->
+		 <accordion>											<!-- definir premier directive -->
+			<expander class="expander" expander-title="title" 
+			ng-repeat="expander in expanders"> 					<!-- definir deuxieme irective, ng-repeat="(key, value) in myObj">-->
+				{{expander.text}} 										<!-- AngularJS expressions variable---->
+			</expander>
+		</accordion>
+		</div>
+	</div>
+</body>
+</html>
+
+	

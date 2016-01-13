@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp"> <!--creer un module myApp, 
+								Cette directive permet tout simplement d'initialiser votre application
+								Tous les modules (contrôleurs, services, directives) seront OBLIGATOIREMENT rattachés à ce module.-->
+	<head>
+		<title>My First Angular directive</title>
+	</head>
+	<body>
+	
+		<!--namespaceDirectiveName ou namespace-directiveName, myFirstDirective
+		<!-- When naming a directive, you must use a camel case name, w3TestDirective, but when invoking it, you must use - separated name, w3-test-directive-->
+		<!-- Pour restrict: 'E',Elements-->
+		<my-first-directive>Hello World!</my-first-directive>
+		
+		<!-- Pour restrict: 'A', attribute-->
+		<div my-first-directive>Hello World!</div>
+		
+		<!-- Pour restrict: 'C', Classe-->
+		<div class="my-first-directive">Hello World!</div>
+		
+		<script src="../../etc/angular.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

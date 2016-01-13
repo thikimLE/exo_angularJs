@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="../../etc/angular.min.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="test.css"/>
+</head>
+
+<body>
+	<div ng-app="MyApp"> <!-- definir un module app -->
+		<div ng-controller="SomeController"> <!-- definir un module controller dans un module app -->
+			<expander class="expander" expander-title="title"> <!-- definir classede directive -->
+				{{text}} <!-- AngularJS expressions variable---->
+			</expander>
+		</div>
+	</div>
+
+<script>
+	var app = angular.module("MyApp", []);
+
+	<!-- attacher un controller dans un module app avec nom SomeController
+	<!-- In AngularJS, $scope is the application object
+	<!-- the controller creates two properties (variables) titre et text in the scope-->
+	app.controller("SomeController", function($scope){
+		$scope.title = "Titre";
+		$scope.text = "Contenu";
+	});
+	
+	<!-- attacher un directive dans un module app-->
+	app.directive("expander", function(){
+		return {
+			<!--Permet de définir comment la déclaration de la directive doit se faire dans le code HTML, Element et classe -->
+			restrict: 'EA', 
+			<!--remplacer la déclaration de notre directive expander  par notre template -->
+			replace: true,
+			transclude: true,
+			
+			<!--Créer un nouveau contexte au lieu d'hériter du contexte du parent.
+			<!--spécifiiez les attributs dont vous voulez hériter
+			<!--contexte isolé : scope: { attributeName1: 'BINDING STRATEGIE',...}
+			<!-- =   : Utiliser le data-binding afin de lier la propriété à la propriété du parent. -->
+			scope: {title: '=expanderTitle'}, <!-- nom directive + variable Titre-->
+			template: '<div>' +
+				'<div class="title" ng-click="toggle()">{{title}}</div>' +
+				'<div class="body" ng-show="showMe" ng-transclude></div>' +
+				'</div>',
+			
+			link: function(scope, element, attrs){
+				scope.showMe = false;
+				scope.toggle = function toggle(){
+					scope.showMe = !scope.showMe;
+				};
+			}
+		};
+	});
+	
+</script>
+</body>
+</html>
+
+	
